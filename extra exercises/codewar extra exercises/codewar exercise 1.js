@@ -11,3 +11,13 @@
 //
 // It will need 3 entire years.
 
+function nbYear(p0, percent, aug, p) {
+    percent = (percent/100)
+    if (p <= p0){
+        return n;
+    }
+    else{
+
+    }
+
+}
