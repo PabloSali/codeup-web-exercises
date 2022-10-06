@@ -1,29 +1,29 @@
 alert('Welcome to my website!');
 
-var userFavColor = prompt("What is your favorite color?");
+let userFavColor = prompt("What is your favorite color?");
 alert(userFavColor + " is my favorite color too!");
 
 // Movie Rental Problem
 let price = 3;
-let littleMermaid = prompt("how long would you like to rent The Little Mermaid?");
-let brotherBear = prompt("how long would you like to rent Brother Bear?");
-let hercule = prompt("how long would you like to rent Hercules?");
-let totalPrice = ((littleMermaid + brotherBear + hercule) * 3);
+let littleMermaid = Number(prompt("how long would you like to rent The Little Mermaid?"));
+let brotherBear = Number(prompt("how long would you like to rent Brother Bear?"));
+let hercule = Number(prompt("how long would you like to rent Hercules?"));
+let totalPrice = ((littleMermaid + brotherBear + hercule) * price);
 alert('Your total price is ' + totalPrice);
 
 // Contractor Problem
-let googlePay = prompt('How much does Google pay you per hour?');
-let amazonPay = prompt('How much does Amazon pay you per hour?');
-let facebookPay = prompt('How much does Facebook pay you per hour?');
-let googlehours = prompt('how long did you work for Google');
-let amazonhours = prompt('how long did you work for Amazon');
-let facebookhours = prompt('how long did you work for Facebook');
-let totalPay = (googlePay * googlehours) + (amazonPay * amazonhours) + (facebookhours + facebookPay);
+let googlePay = Number(prompt('How much does Google pay you per hour?'));
+let amazonPay = Number(prompt('How much does Amazon pay you per hour?'));
+let facebookPay = Number(prompt('How much does Facebook pay you per hour?'));
+let googlehours = Number(prompt('how long did you work for Google'));
+let amazonhours = Number(prompt('how long did you work for Amazon'));
+let facebookhours = Number(prompt('how long did you work for Facebook'));
+let totalPay = (googlePay * googlehours) + Number(amazonPay * amazonhours) + Number(facebookhours + facebookPay);
 alert('Your total payment should be $' + totalPay + '.00')
 
 // Student Enrollment
 let isClassFull = confirm('Was this class full? Press okay if its not full, press cancel if it is.')
-let isThereScheduleConflict = confirm('Does this class conflict with our schedule? Press okay if there is no conflict, press cancel is there is a conflict.')
+let isThereScheduleConflict = confirm('Does this class conflict with your schedule? Press okay if there is no conflict, press cancel is there is a conflict.')
 if((isClassFull == true) && (isThereScheduleConflict == true)){
     alert("You can enroll in this class.");
 }
