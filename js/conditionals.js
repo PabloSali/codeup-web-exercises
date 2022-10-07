@@ -187,4 +187,33 @@ alert('Your new price with the discount is: ' + newTotal);
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
-
+function pickANumber(){
+    let wantsToPlay = confirm('Would you like to pick a number?');
+    if (wantsToPlay === true){
+        let chosenNumber = prompt('alright give me a number.')
+        chosenNumber = Number(chosenNumber);
+        let isEvenOrOdd = chosenNumber % 2;
+        let plus100 = chosenNumber + 100;
+        let isPosORNeg = (chosenNumber > 0)
+        if(isEvenOrOdd === 1){
+            alert(chosenNumber + ' is odd.');
+        }
+        if(isEvenOrOdd === 0){
+            alert(chosenNumber + ' is even.');
+        }
+        alert(chosenNumber + ' + 100 = ' + plus100);
+        if(isPosORNeg === true){
+            alert(chosenNumber + ' is positive.');
+        }
+        else if(isPosORNeg === false){
+            alert(chosenNumber + ' is negative.');
+        }
+        else{
+            alert(chosenNumber + ' is neither positive nor negative.')
+        }
+    }
+    else{
+        alert('then why are you here?');
+    }
+}
+pickANumber();
