@@ -1,16 +1,18 @@
 "use strict";
-// Lecture mini exercise
-let username = 'pasali'
-let password = 'pasali1'
-let userUsername = prompt('Enter your Username')
-let userPassword = prompt('Enter your Password')
 
-if (username === userUsername && password === userPassword) {
-    console.log("User has successfully logged in");
-}
-else{
-        console.log('Credentials are incorrect');
-}
+// Lecture mini exercise
+
+// let username = 'pasali'
+// let password = 'pasali1'
+// let userUsername = prompt('Enter your Username')
+// let userPassword = prompt('Enter your Password')
+//
+// if (username === userUsername && password === userPassword) {
+//     console.log("User has successfully logged in");
+// }
+// else{
+//         console.log('Credentials are incorrect');
+// }
 
 
 /* ########################################################################## */
@@ -36,19 +38,19 @@ else{
  */
 function analyzeColor(color){
     if(color === 'blue'){
-        console.log('Blue is the color of the ocean.');
+        alert('Blue is the color of the ocean.');
     }
     else if (color === 'red'){
-        console.log('Red is the color of tomatoes.');
+        alert('Red is the color of tomatoes.');
     }
     else if (color === 'green'){
-        console.log('Green is the color of the code up logo.');
+        alert('Green is the color of the code up logo.');
     }
     else if (color === 'yellow'){
-        console.log('Yellow is the color of bananas.');
+        alert('Yellow is the color of bananas.');
     }
     else{
-        console.log('I cannot think of anything that is ' + color);
+        alert('I cannot think of anything that is ' + color);
     }
 }
 //------------------------------------------------------------------------------------
@@ -65,13 +67,29 @@ let randomColor = colors[Math.floor(Math.random() * colors.length)];
  * You should see a different message every time you refresh the page
  */
 
-console.log(analyzeColor(randomColor));
+//console.log(analyzeColor(randomColor));
 //--------------------------------------------------------------------------------------
 /**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
-
+switch (randomColor){
+    case 'blue':
+        alert('Blue is the color of the ocean.');
+        break;
+    case 'red':
+        alert('Red is the color of tomatoes.');
+        break
+    case 'green':
+        alert('Green is the color of the code up logo.');
+        break;
+    case 'yellow':
+        alert('Yellow is the color of bananas.');
+        break;
+    default:
+        alert('I cannot think of anything that is ' + randomColor);
+        break;
+}
 //---------------------------------------------------------------------------------------
 /**
  * TODO:
@@ -79,6 +97,7 @@ console.log(analyzeColor(randomColor));
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+analyzeColor(prompt('Choose a color.'));
 
 //-----------------------------------------------------------------------------------------
 /* ########################################################################## */
@@ -102,7 +121,34 @@ console.log(analyzeColor(randomColor));
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
-
+function calculateTotal(luckyNumber, totalCost){
+    if(luckyNumber === 1){
+        let discount = .1;
+        return (totalCost - (totalCost) * discount);
+    }
+    else if (luckyNumber === 2){
+        let discount = .25;
+        return (totalCost - (totalCost) * discount);
+    }
+    else if (luckyNumber === 3){
+        let discount = .35;
+        return (totalCost - (totalCost) * discount);
+    }
+    else if (luckyNumber === 4){
+            let discount = .5;
+            return (totalCost - (totalCost) * discount);
+    }
+    else if (luckyNumber === 5) {
+        let discount = 1;
+        return (totalCost - (totalCost) * discount);
+    }
+    else{
+    return totalCost;
+    }
+}
+console.log(calculateTotal(0,100));
+console.log(calculateTotal(3,43));
+console.log(calculateTotal(5,1000000));
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 5.
@@ -111,9 +157,18 @@ console.log(analyzeColor(randomColor));
  * and alerts to display to the user what their lucky number was, what their
  * price before the discount was, and what their price after the discount is.
  */
-// Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+//Generate a random number between 0 and 6
+let luckyNumber = Math.floor(Math.random() * 6);
 
+let undiscountedBill = Number(prompt('Total bill price?'));
+
+let newTotal = calculateTotal(luckyNumber, undiscountedBill)
+alert('Your lucky number was ' + luckyNumber)
+alert('Your undiscounted price is: ' + undiscountedBill)
+alert('Your new price with the discount is: ' + newTotal);
+
+
+//----------------------------------------------------------------------------------------
 /**
  * TODO:
  * Write some JavaScript that uses a `confirm` dialog to ask the user if they
@@ -132,3 +187,4 @@ console.log(analyzeColor(randomColor));
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+
