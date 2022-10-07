@@ -22,17 +22,20 @@
  * console.logging the function's return value
  */
 function analyzeColor(color){
-    if(color = 'blue'){
-        return 'Blue is the color of the ocean.';
+    if(color === 'blue'){
+        console.log('Blue is the color of the ocean.');
     }
-    if else(color ='red'){
-        return 'Red is the color of tomatoes.';
+    else if (color === 'red'){
+        console.log('Red is the color of tomatoes.');
     }
-    if else(color = 'green'){
-        return 'Green is the color of the code up logo.';
+    else if (color === 'green'){
+        console.log('Green is the color of the code up logo.');
+    }
+    else if (color === 'yellow'){
+        console.log('Yellow is the color of bananas.');
     }
     else{
-        return 'I cannot think of anything that is ' + color;
+        console.log('I cannot think of anything that is ' + color);
     }
 }
 //------------------------------------------------------------------------------------
@@ -41,15 +44,15 @@ function analyzeColor(color){
 // - `colors`: a list of the colors of the rainbow
 // - `randomColor`: contains a single random color value from the list (this
 //                  will contain a different color every time the page loads)
-var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-var randomColor = colors[Math.floor(Math.random() * colors.length)];
+let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+let randomColor = colors[Math.floor(Math.random() * colors.length)];
 /**
  * TODO:
  * Pass the `randomColor` variable to your 'analyzeColor' function and console.log the results.
  * You should see a different message every time you refresh the page
  */
 
-console.log(analyzeColor(colors));
+console.log(analyzeColor(randomColor));
 //--------------------------------------------------------------------------------------
 /**
  * TODO:
