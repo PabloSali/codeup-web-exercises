@@ -1,5 +1,17 @@
 "use strict";
 
+let username = pasali
+let password = pasali1
+let userUsername = prompt('Enter your Username')
+let userPassword = prompt('Enter your Password')
+
+if (username === userUsername && password === userPassword){
+        console.log("User has succefully logged in");
+    else{
+        console.log('Credentials are incorrect');
+    }
+}
+
 /* ########################################################################## */
 
 /**
