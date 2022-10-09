@@ -5,8 +5,12 @@
 - include cardio sometime during the week
 
 */
-let armPulling =[];
-let armPushing =[];
-let legsMain =[];
+let armPulling =['DB Hammer Curl','Single KB Curl','DB Concentration Curl'];
+let armPushing =['DB Triceps Extension','KB Overhead Press','Kb Kickback' ];
+let legsMain =['Goblet Squat', -];
 let legsAux =[];
-let
+let coreFocus = [];
+let backAndTraps = [];
+let chestAndShoulder = [];
+let cardioDay = [];
+
