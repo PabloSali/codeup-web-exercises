@@ -15,14 +15,29 @@ function multiplicationTable(num){
 // Step 3
 
 for(let i = 0; i < 20; ++i){
-    if (x % 2 === 0){
-        console.log(x + ' is even');
+    let randNum = Math.floor(Math.random() * 100) + 20;
+    if (randNum % 2 === 0){
+        console.log(randNum + ' is even');
     } else {
-        console.log(x + ' is odd');
+        console.log(randNum + ' is odd');
     }
 }
 
 //----------------------------------------------------------------
 // Step 4
 
-for
+for(let i = 1; i < 10; i++){
+   let num = i
+    numToStr = num.toString()
+    console.log(numToStr.repeat(num));
+
+    parseFloat(i);
+}
+
+//----------------------------------------------------------------
+// Step 5
+
+for(let i = 100; i > 0; i = i - 5){
+
+    console.log(i)
+}
