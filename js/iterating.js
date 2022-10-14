@@ -39,7 +39,9 @@
      * TODO:
      * Refactor your above code to use a `forEach` loop
      */
-        names.forEach(function)
+    names.forEach(function(name){
+            console.log(names)
+    })
     //-----------------------------------------------------------------
     /**
      * TODO:
