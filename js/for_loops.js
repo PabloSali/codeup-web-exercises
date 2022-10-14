@@ -1,7 +1,7 @@
 // Step 2
 function multiplicationTable(num){
     for(let i = 1; i <= 10; i++) {
-        console.log(num + " x " + i, " = " + num * i);
+        console.log(num + " x " + i + " = " + num * i);
     }
 }
 multiplicationTable(6);
@@ -9,7 +9,7 @@ multiplicationTable(6);
 // Step 3
 
 for(let i = 0; i < 20; ++i){
-    let randNum = Math.floor(Math.random() * 100) + 20;
+    let randNum = Math.floor(Math.random() * 180) + 20;
     if (randNum % 2 === 0){
         console.log(randNum + ' is even');
     } else {
@@ -22,7 +22,7 @@ for(let i = 0; i < 20; ++i){
 
 for(let i = 1; i < 10; i++){
    let num = i;
-    let numToStr = num.toString();
+   let numToStr = num.toString();
     console.log(numToStr.repeat(num));
 }
 
