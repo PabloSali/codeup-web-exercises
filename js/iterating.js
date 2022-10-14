@@ -56,6 +56,18 @@
      *  > second([1, 2, 3, 4, 5]) // returns 2
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
+// 1
+    function return1 (inputtedArray){
+        return inputtedArray[0];
+    }
 
+// 2
+    function return2 (inputtedArray){
+        return inputtedArray[2];
+    }
+// 3
+    function return3 (inputtedArray){
+        return inputtedArray[inputtedArray.length - 1];
+    }
     //-----------------------------------------------------------------
 })();
