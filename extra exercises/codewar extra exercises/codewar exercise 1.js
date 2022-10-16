@@ -20,8 +20,19 @@ function nbYear(p0, percent, aug, p) {
     return years;
 };
 //-------------------------------------------------------------------------------------------------------------
-// Tiangle Problem
-// Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
-//
-// (In this case, all triangles must have surface greater than 0 to be accepted).
+// ()()()() Exercise
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
 
+function duplicateEncode(word){
+    let inputtedWord = word.toLowerCase();
+    let encodedWord = '';
+
+    for(let i = 0; i < word.length; i++) {
+        if (inputtedWord.lastIndexOf(word[i]) === inputtedWord.indexOf(word[i])) {
+            encodedWord += '(';
+        } else
+            encodedWord += ')';
+    }
+    return encodedWord;
+
+}
