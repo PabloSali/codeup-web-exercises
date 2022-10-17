@@ -13,7 +13,7 @@
         firstName: 'Pablo',
         lastName: 'Salinas'
     }
-
+//---------------------------------------------------------------------------------------
     /**
      * TODO:
      * Add a sayHello method to the person object that returns a greeting using
@@ -26,6 +26,7 @@
     person.sayHello = function(){
         console.log('Hello from ' + person.firstName + ' ' + person.lastName);
     }
+    //-------------------------------------------------------------------------------------
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to more than $200. If a shopper spends more than $200, they get a 12%
      * discount. Write a JS program, using conditionals, that logs to the
@@ -52,7 +53,7 @@ shoppers.forEach(function (element){
         }
     });
 
-
+//----------------------------------------------------------------------------------------
     /** TODO:
      * Create an array of objects that represent books and store it in a
      * variable named `books`. Each object should have a title and an author
@@ -65,7 +66,14 @@ shoppers.forEach(function (element){
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
-
+    let books = [
+        {title: 'Meditations', autor:{ firstName:'Marcus', lastName:'Aurelius'}},
+        {title: 'Extreme Ownership', autor:{ firstName:'Jocko', lastName:'Willink'}},
+        {title: 'Chaos', autor:{ firstName:'Tom', lastName:"O'Neill"}},
+        {title: "Can't Hurt Me", autor:{ firstName:'David', lastName:'Goggins'}},
+        {title: 'Atomic Habit', autor:{ firstName:'James', lastName:'Clear'}},
+    ]
+ //----------------------------------------------------------------------------------
     /**
      * TODO:
      * Loop through the books array and output the following information about
@@ -102,4 +110,9 @@ shoppers.forEach(function (element){
      *   `showBookInfo` function.
      */
 
+    books.forEach(function (x){
+        console.log('Book #' + books.indexOf(x) + 1);
+        console.log('Title: ' + x.title);
+        console.log('Author: ' + (x.autor.firstName + ' ' + x.autor.lastName))
+    });
 })();
