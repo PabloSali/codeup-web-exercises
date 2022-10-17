@@ -115,4 +115,12 @@ shoppers.forEach(function (element){
         console.log('Title: ' + x.title);
         console.log('Author: ' + (x.autor.firstName + ' ' + x.autor.lastName))
     });
+//--------------------------------------------------------------------------------------------------------
+    function createBook(){
+        let bookTitle = prompt('Enter Book Title.');
+        let bookAuthorLastName = prompt("Enter Author's Last Name.");
+        let bookAuthorFirstName = prompt("Enter Author's First Name.");
+        let addedBook = { title:bookTitle, author:{ firstName:bookAuthorFirstName, lastName:bookAuthorLastName} }
+        books.push(addedbook)
+    }
 })();
