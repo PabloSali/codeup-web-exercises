@@ -9,7 +9,27 @@
 body {
     background-color: blanchedalmond;
     background-image: url(../img/Desks.jpg);
-    font-family: 'Figtree', sans-serif;
+    background-size: 250px;
+    background-position-x: 200px;
+    background-position-y: 200px;
+    background-repeat: no-repeat;
+    font-family: helvetica, arial, serif;
 }
 
+table{
+    padding: 40px 40px 40px 40px;
+    font-size: large;
+}
 
+a:link {
+    color:blue
+}
+a:visited {
+    color:purple;
+}
+a:hover {
+    color:yellow;
+}
+a:active {
+    color:rosybrown;
+}
