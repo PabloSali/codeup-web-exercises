@@ -66,9 +66,9 @@ function isNumeric (){
 //     Ex: filterNegativity([5, -6, 2, 0, -5, -13]) // returns [5, 2, 0,]
 
 function filterNegativity(arr){
-    for(i=0; i<arr.length;i++){
-        let posArray = [];
-        if(arr[i] >= 0 && isNumeric(arr[i]) === true) {
+    let posArray = [];
+    for(let i=0; i < arr.length;i++){
+        if(arr[i] >= 0 ) {
             posArray.push[arr[i]];
         } else if (i === arr.length){
             return posArray;
