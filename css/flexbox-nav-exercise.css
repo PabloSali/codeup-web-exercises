@@ -1,0 +1,34 @@
+html{
+    box-sizing: border-box;
+}
+.navbar{
+    background-color: #c2bdbd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    font-family: Montserrat, Work Sans, sans-serif;
+    font-size: 3em;
+    padding-top: .2em;
+}
+.navbar-left{
+    display: flex;
+
+}
+.navbar-right{
+    display: flex;
+}
+.left-bar{
+    font-size: small;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.right-bar{
+    font-size: small;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+a:hover {
+    color: blue;
+}
