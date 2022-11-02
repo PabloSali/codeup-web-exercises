@@ -1,7 +1,10 @@
-.jumbotron{
-    height: 346px;
-    background-size: cover;
-    text-align: center;
-    margin: auto;
-    background-image: url("../img/pizza.jpg");
+@media screen and (min-width:400px) {
+    .jumbotron{
+        height: 346px;
+        background-size: cover;
+        text-align: center;
+        margin: auto;
+        background-image: url("../img/pizza.jpg");
+    }
+
 }
