@@ -1,5 +1,8 @@
 "use strict";
+window.load
 
-$(function() {
-    alert( 'The DOM has finished loading!' );
-});
+(function(){
+    $(document).ready(function(){
+        //jquery goes here
+    })
+})();
