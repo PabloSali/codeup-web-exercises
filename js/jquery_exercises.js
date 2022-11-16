@@ -3,13 +3,13 @@
 
 (function(){
     $(document).ready(function(){
-        // let contents = $('#head').html();
-        // alert(contents);
+        // let h1contents = $('#head').html();
+        // alert(h1contents);
 
-        // $('.codeup').css('border: 1px;', 'border-color: red;');
+        $('.codeup').css('border', 'solid 1px red');
 
-        $('li').css('font-size: 20px;');
-        $('li', 'p', 'h1').css('background-color: yellow;');
+        $('li').css('font-size',  ' 20px');
+        $('li, p , h1').css('background-color', 'yellow');
 
     })
 })();
