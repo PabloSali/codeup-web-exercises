@@ -24,10 +24,10 @@
 <!-- Mapbox JS -->
 <script src='../js/keys.js'></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-
+<script src="js/mapbox-geocoder-utils.js"></script>
 <!-- Custom JS -->
 <script>
-
+// Creates Map
   mapboxgl.accessToken = MAPBOX_TOKEN;
   let map = new mapboxgl.Map({
     container: 'map',
@@ -35,12 +35,24 @@
     zoom: 10,
     center: [-96.80331225411656, 32.77771008020435]
   });
-
+// Makes marker on the map
   let marker = new mapboxgl.Marker()
     .setLngLat([-96.80331225411656, 32.77771008020435])
     .addTo(map);
+//  Create Popup text for the marker
+  let popup = new mapboxgl.Popup()
+          .setHTML("<h1> popup stuff </h1>")
 
-  let popup = new mapboxgl.Popup
+  marker.setPopup(popup);
+// Takes in a string and turns it into a Grid Coordinate
+  geocode("900 Jackson St #410, Dallas, TX 75202", MAPBOX_TOKEN).then(function(result) {
+    console.log(result);
+    map.setCenter(result);
+    map.setZoom(10);
+  });
+reverseGeocode({lng: -96.80331225411656, lat: 32.77771008020435}, MAPBOX_TOKEN).then(function(results) {
+  console.log(results);
+});
 
 </script>
 </body>
