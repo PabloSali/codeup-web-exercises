@@ -22,27 +22,25 @@
 <div id='map'></div>
 
 <!-- Mapbox JS -->
-<script src='js/keys.js'></script>
+<script src='../js/keys.js'></script>
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
 <!-- Custom JS -->
 <script>
+
   mapboxgl.accessToken = MAPBOX_TOKEN;
   let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v9',
     zoom: 10,
-    center: [-98.4916, 29.4252]
+    center: [-96.80331225411656, 32.77771008020435]
   });
-</script>
-<script>
-  mapbox.accessToken = MAPBOX_TOKEN;
-  let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9',
-    zoom: 10,
-    center: [-96.802944, 32.777995],
-  });
+
+  let marker = new mapboxgl.Marker()
+    .setLngLat([-96.80331225411656, 32.77771008020435])
+    .addTo(map);
+
+  let popup = new mapboxgl.Popup
 
 </script>
 </body>
