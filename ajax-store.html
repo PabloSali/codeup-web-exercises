@@ -4,8 +4,11 @@
     <title>Online Store</title>
 </head>
 <body>
+<h1 class="d-flex justify-content-center">
+    <i class="fa-solid fa-trowel me-2"></i> <i class="fa-solid fa-wrench me-3"></i> My Tool Store <i class="fa-solid fa-hammer ms-3"></i> <i class="fa-solid fa-screwdriver ms-2"></i>
+</h1>
+<button type="button" class="btn btn-primary  mt-2 mt-md-3 mb-3 mb-md-0" id="refresh">Refresh</button>
 
-<h1>My Tool Store</h1>
 
 <table id="products">
     <thead>
@@ -22,28 +25,17 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <script>
-    (function () {
+    (function() {
         "use strict";
-        // TODO: Create an AJAX GET request for the file under data/inventory.json
-        $.get("../data/inventory.json").done(function (data) {
-            for (let i = 0; i < data.length; i++) {
-                $("#insertProducts").append(`
-                <tr>
-                <th>${data[i].title}</th>
-                <th>${data[i].quantity}</th>
-                <th>${data[i].price}</th>
-                <th>${data[i].categories}</th>
-                </tr>`
-                )
-
-
-            }
-        })
-
-        // TODO: Take the data from inventory.json and append it to the products table
-        //       HINT: Your data should come back as a JSON object; use console.log() to inspect
-        //             its contents and fields
-        //       HINT: You will want to target #insertProducts for your new HTML elements
+        $.get("data/inventory.json").done(function(data) {
+            console.log(data);
+            let tdata = '';
+            data.forEach(function(tool) {
+                let category = tool.categories.join("<br>");
+                tdata += `<tr> <td>${tool.title}</td>  <td>${tool.quantity}</td> <td>$${tool.price}</td> <td>${category}</td> </tr>`
+            });
+            return $('#insertProducts').html(tdata);
+        });
     })();
 </script>
 
