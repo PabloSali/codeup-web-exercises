@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajax Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
     <div id="posts">
       My Empty Div
     </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script>
+        (function() {
+            "use strict";
+            $.get("data/blog.json").done(function(data) {
+                console.log(data);
+                let input = '';
+                for (let i = 0; i < data.length; i++) {
+                    let tags = data[i].tags.join(", ");
+                    let pink = "var(--pink" + (29 % (i + 2)) + ")";
+                    input += `<h5 style="color: ${pink}">${data[i].name}</h5>` +
+                        `<p style="font-family: 'Halimun', sans-serif; color: ${pink}">${data[i].burn}</p>` +
+                        `<p style="color: ${pink}">${tags}</p>` +
+                        `<p style="color: ${pink}">${data[i].date}</p>`
+                };
+                return $('#posts').html(input);
+            });
+        })();
+    </script>
 </body>
 </html>
