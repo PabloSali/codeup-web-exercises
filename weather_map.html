@@ -9,7 +9,7 @@
 </head>
 <body>
 <!------------------------ Nav Bar Start ----------------------->
-<nav class="navbar bg-light">
+<nav class="navbar bg-light" id="navbar-main">
     <div class="container-fluid">
 <!-------- Weather Page Logo -------->
         <a class="navbar-brand" href="#">
@@ -27,8 +27,9 @@
 <!------------------------ Nav Bar End ----------------------->
 
 <div class="row">
+
     <!-- Container for Mapbox -->
-    <div class="col-sm-8 col-md-8 col-lg-8" id="mapbox-div">
+    <div class="col-sm-6 col-md-6 col-lg-6" id="mapbox-div">
         <!-- Map Title -->
         <h1>City:</h1>
         <div id='map'>
@@ -36,11 +37,15 @@
         </div>
     </div>
 
+    <!------- Empty Div for Spacing ------------>
+    <div class="col-sm-8 col-md-8 col-lg-8"></div>
+    <!--  End of Empty Div  -->
+
     <!-- Container for Forecast Cads -->
     <div class="col-sm-4 col-md-4 col-lg-4" id="forecast-div">
         <!----- Forecast Card #1 ----->
-        <div class="card text-bg-dark">
-            <img src="..." class="card-img" alt="...">
+        <div class="card text-bg-dark forecast-card" id="forecast-one">
+            <img src="img/cloudy.avif" class="card-img" alt="...">
             <div class="card-img-overlay">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -48,7 +53,41 @@
             </div>
         </div>
         <!-- Forecast Card #2 -->
-
+        <div class="card text-bg-dark forecast-card" id="forecast-two">
+            <img src="img/partialycloudy.avif" class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <!-- Forecast Card #3 -->
+        <div class="card text-bg-dark forecast-card" id="forecast-three">
+            <img src="img/partialycloudy.avif" class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <!-- Forecast Card #4 -->
+        <div class="card text-bg-dark forecast-card" id="forecast-four">
+            <img src="img/partialycloudy.avif" class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <!-- Forecast Card #5 -->
+        <div class="card text-bg-dark forecast-card" id="forecast-five">
+            <img src="img/partialycloudy.avif" class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Links -->
