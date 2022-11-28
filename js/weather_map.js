@@ -1,12 +1,18 @@
 // Code to get object information from api
+// let citySearch = document.getElementById('userCity');
+// let searchButton = document.getElementById('citySearchButton');
+// searchButton.addEventListener('click', function() {
+//
+// }
     $.get("http://api.openweathermap.org/data/2.5/forecast", {
         APPID: OPEN_WEATHER_APPID,
-        q:     "London",
+        q: 'Dallas',
         units: "imperial"
-    }).done(function(data) {
+    }).done(function (data) {
         console.log(data); // Entire Object Console Log
         console.log(data.list[0].main.temp_max); // Max Temp Console Log
     });
+
 //------------- Map Box Code ----------------------
     //---------- Creates Map ------------
     mapboxgl.accessToken = MAPBOX_TOKEN;
@@ -16,6 +22,7 @@
         zoom: 10,
         center: [-96.80331225411656, 32.77771008020435]
     });
+
 // ------ Code Plan -------
 /*
 - Change Locations
