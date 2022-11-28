@@ -8,31 +8,16 @@ $.get("http://api.openweathermap.org/data/2.5/forecast", {
     console.log(data.list[0].main.temp_max); // Max Temp Console Log
 });
 //------------- Map Box Code ----------------------
+//---------- Creates Map ------------
+mapboxgl.accessToken = MAPBOX_TOKEN;
+let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    zoom: 10,
+    center: [-96.80331225411656, 32.77771008020435]
+});
 
-function geocode(search, token) {
-    let baseUrl = 'https://api.mapbox.com';
-    let endPoint = '/geocoding/v5/mapbox.places/';
-    return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
-        .then(function(res) {
-            return res.json();
-            // to get all the data from the request, comment out the following three lines...
-        }).then(function(data) {
-            return data.features[0].center;
-        });
-}
 
-function reverseGeocode(coordinates, token) {
-    let baseUrl = 'https://api.mapbox.com';
-    let endPoint = '/geocoding/v5/mapbox.places/';
-    return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
-        .then(function(res) {
-            return res.json();
-        })
-        // to get all the data from the request, comment out the following three lines...
-        .then(function(data) {
-            return data.features[0].place_name;
-        });
-}
 
 
 //------------- Map Box Code ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆ
