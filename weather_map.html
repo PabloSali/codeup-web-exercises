@@ -8,21 +8,49 @@
     <link href="css/weather_map.css" rel="stylesheet">
 </head>
 <body>
+<!------------------------ Nav Bar Start ----------------------->
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+<!-------- Weather Page Logo -------->
+        <a class="navbar-brand" href="#">
+            <img src="" alt="Insert Logo Here" width="30" height="24">
+        </a>
+<!-------- Weather Page Name -------->
+        <a class="navbar-brand"> Weather Map Name Here </a>
+<!------- Weather Page Search Bar ------->
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<!------------------------ Nav Bar End ----------------------->
 
-<!-- Container for Forecast Cads -->
-<div class="" id="forecast-div">
-    <!-- Forecast Cards Get inserted here -->
-</div>
+<div class="row">
+    <!-- Container for Mapbox -->
+    <div class="col-sm-8 col-md-8 col-lg-8" id="mapbox-div">
+        <!-- Map Title -->
+        <h1>City:</h1>
+        <div id='map'>
+            <!-- Map Gets Inserted in this Div Container -->
+        </div>
+    </div>
 
-<!-- Container for Mapbox -->
-<div class="" id="mapbox-div">
-    <!-- Map Title -->
-    <h1>City:</h1>
-    <div id='map'>
-        <!-- Map Gets Inserted in this Div Container -->
+    <!-- Container for Forecast Cads -->
+    <div class="col-sm-4 col-md-4 col-lg-4" id="forecast-div">
+        <!----- Forecast Card #1 ----->
+        <div class="card text-bg-dark">
+            <img src="..." class="card-img" alt="...">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <!-- Forecast Card #2 -->
+
     </div>
 </div>
-
 <!-- Links -->
 <script src="js/keys.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
