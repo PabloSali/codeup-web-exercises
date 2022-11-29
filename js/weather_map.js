@@ -8,27 +8,48 @@
 
 // Code to create a variable that holds api information requested through get.
 // Variable is then able to be used to access City information
+// Variable is used to request city info, set equal to search box info
 
-    // Variable is used to request city info, set equal to search box info
-    let city = 'Houston'
-    let currentCityArray
+// selector for search button and event listener that initiates user city search
+let userCitySearch = document.querySelector('#citySearchButton');
+userCitySearch.addEventListener('click', loadUserCity);
 
+let currentCityArray = []
+
+// Function that takes user search input and sends get request
+function loadUserCity() {
+    event.preventDefault();
+    let city = document.getElementById('userCity').value;
+    console.log(city);
 
     $.get("http://api.openweathermap.org/data/2.5/forecast", {
         APPID: OPEN_WEATHER_APPID,
         q: city,
         units: "imperial"
     }).done(function (data) {
-        // let arrayData = [data]
+        let arrayData = [data]
         console.log(data); // Entire Object Console Log
         console.log(data.list[0].main.temp_max); // Max Temp Console Log
-        // currentCityArray.push(arrayData);
-
-
+        currentCityArray.push(arrayData);
+        // console.log(currentCityArray)
+        variableAssignment();
     });
-    console.log(currentCityArray);
-    // let currentCityInfo = currentCityArray[0];
-    // console.log(currentCityInfo);
+};
+function variableAssignment() {
+        // Shows all JSON for city
+        console.log(currentCityArray);
+        // Variable to use for accessing JSON, list index is date
+        let currentCityInfo = currentCityArray[0];
+        let dayOneMax = currentCityInfo[0].list[0].main.temp_max;
+        let dayOneMin = currentCityInfo[0].list[0].main.temp_min;
+        let dayOneFeel = currentCityInfo[0].list[0].main.feels_like;
+        let dayOneHum = currentCityInfo[0].list[0].main.humidity;
+
+        console.log(dayOneMax);
+        console.log(dayOneMin);
+        console.log(dayOneFeel);
+        console.log(dayOneHum);
+}
 
 //------------- Map Box Code ----------------------
     //---------- Creates Map ------------
@@ -51,36 +72,6 @@
     - Set Variables equal to each attribute needed (Date, Temp, Feel Like, Humidity, Coverage)
     - Feed each variable into jquery that inputs variable into innerHTML
  */
-
-//------------- Map Box Code ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆ
-//------------- Forecast Card Code ˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆˆ
-
-
-
-// function makeForecastCard() {
-//
-//     let coffeeCards = '<div class="card coffeeCard" style="width: 18rem;">';
-//     coffeeCards += '<img src="' + coffee.image +'" className="card-img-top" alt="...">';
-//     coffeeCards += '<div class="card-body">'
-//     coffeeCards += '<h5 class="card-title headerFont"> '+ coffee.name +' </h5>'
-//     coffeeCards += '<p class="card-text">' + coffee.roast + ' roast</p>'
-//     coffeeCards += '</div>'
-//     coffeeCards += '</div>'
-//
-//     return coffeeCards;
-// }
-//
-// function place all(coffees) {
-//     let html = '';
-//     for(let i = 0; i < coffees.length; i++) {
-//         // if ()
-//         html += makeForecastCard(coffees[i]);
-//     }
-//     return html;
-// }
-//
-// let tbody = document.querySelector('#coffees');
-// tbody.innerHTML = renderCoffees(coffees);
 
 /* --------------------------------------
 Op Plan
