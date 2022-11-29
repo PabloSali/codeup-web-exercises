@@ -1,17 +1,34 @@
 // Code to get object information from api
-// let citySearch = document.getElementById('userCity');
-// let searchButton = document.getElementById('citySearchButton');
-// searchButton.addEventListener('click', function() {
-//
-// }
+
+    // let citySearch = document.getElementById('userCity');
+    // let searchButton = document.getElementById('citySearchButton');
+    // searchButton.addEventListener('click', function() {
+    //
+    // });
+
+// Code to create a variable that holds api information requested through get.
+// Variable is then able to be used to access City information
+
+    // Variable is used to request city info, set equal to search box info
+    let city = 'Houston'
+    let currentCityArray
+
+
     $.get("http://api.openweathermap.org/data/2.5/forecast", {
         APPID: OPEN_WEATHER_APPID,
-        q: 'Dallas',
+        q: city,
         units: "imperial"
     }).done(function (data) {
+        // let arrayData = [data]
         console.log(data); // Entire Object Console Log
         console.log(data.list[0].main.temp_max); // Max Temp Console Log
+        // currentCityArray.push(arrayData);
+
+
     });
+    console.log(currentCityArray);
+    // let currentCityInfo = currentCityArray[0];
+    // console.log(currentCityInfo);
 
 //------------- Map Box Code ----------------------
     //---------- Creates Map ------------
