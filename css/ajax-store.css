@@ -1,0 +1,17 @@
+button {
+
+    color: #FFFFFF;
+    background-color: #3B94D9 !important;
+}
+
+body {
+    color: #FFFFFF;
+    background-color: darkgreen;
+}
+
+td {
+    margin-left: 2em !important;
+}
+th {
+    margin-left: 2em !important;
+}

@@ -35,108 +35,117 @@
     let forecastFiveFeel = document.querySelector('#forecast5-feel-temp');
     let forecastFiveHum = document.querySelector('#forecast5-humidity');
 
-let currentCityArray = []
+// Variable that Holds JSON to manipulation later
+    let currentCityArray = []
 
 // selector for search button and event listener that initiates user city search
-let userCitySearch = document.querySelector('#citySearchButton');
-userCitySearch.addEventListener('click', loadUserCity);
+    let userCitySearch = document.querySelector('#citySearchButton');
+    userCitySearch.addEventListener('click', loadUserCity);
 
 // Function that takes user search input and sends get request
-function loadUserCity() {
-    event.preventDefault();
-    // Variable Gets City from Search Bar
-    let city = document.getElementById('userCity').value;
+    function loadUserCity() {
+        event.preventDefault();
+        // Variable Gets City from Search Bar
+            let city = document.getElementById('userCity').value;
 
-    // Get request to pull JSON of City variable
-    $.get("http://api.openweathermap.org/data/2.5/forecast", {
-        APPID: OPEN_WEATHER_APPID,
-        q: city,
-        units: "imperial"
-    }).done(function (data) {
-        let arrayData = [data]
-        console.log(data); // Entire Object Console Log
-        currentCityArray.push(arrayData);
-        variableAssignment();
-        // renderCityMap();
+        // Get request to pull JSON of City variable
+            $.get("http://api.openweathermap.org/data/2.5/forecast", {
+                APPID: OPEN_WEATHER_APPID,
+                q: city,
+                units: "imperial"
+            }).done(function (data) {
+                let arrayData = [data]
+                console.log(data); // Entire Object Console Log
+                currentCityArray.push(arrayData);
+                variableAssignment();
+                renderCityMap();
 
+            });
+    };
+
+function renderCityMap(){
+    let currentCityInfo = currentCityArray[0];
+    let cityLat = currentCityInfo[0].city.coord.lat;
+    let cityLon = currentCityInfo[0].city.coord.lon;
+    console.log(cityLat);
+    console.log(cityLon);
+    mapboxgl.accessToken = MAPBOX_TOKEN;
+    let newMap = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        zoom: 10,
+        center: [cityLon, cityLat]
     });
 };
 
-// function renderCityMap(){
-//     let currentCityInfo = currentCityArray[0];
-//     let cityLat = currentCityInfo[0].list[0].city.coord.lat;
-//     let cityLon = currentCityInfo[0].list[0].city.coord.lon;
-//     console.log(cityLat);
-//     console.log(cityLon);
-// };
-
-function variableAssignment() {
+// Function that creates the variables to pass JSON information to the Forecast HTML Cards
+    function variableAssignment() {
         // Shows all JSON for city
-        console.log(currentCityArray);
+            console.log(currentCityArray);
         // Variable to use for accessing JSON, list index is date
-        let currentCityInfo = currentCityArray[0];
+            let currentCityInfo = currentCityArray[0];
         // Variables assign data and push it to the Forecast Cards
 
         // Day 1
-        let dayOneDate = currentCityInfo[0].list[0].dt_txt
-        let dayOneMax = currentCityInfo[0].list[0].main.temp_max;
-        let dayOneMin = currentCityInfo[0].list[0].main.temp_min;
-        let dayOneFeel = currentCityInfo[0].list[0].main.feels_like;
-        let dayOneHum = currentCityInfo[0].list[0].main.humidity;
-        forecastOneTitle.innerHTML = "Date: " + dayOneDate;
-        forecastOneHigh.innerHTML = "High: " + dayOneMax;
-        forecastOneLow.innerHTML = "Low: " + dayOneMin;
-        forecastOneFeel.innerHTML = "Feels Like: " + dayOneFeel;
-        forecastOneHum.innerHTML = "Humidity: " + dayOneHum;
+            let dayOneDate = currentCityInfo[0].list[0].dt_txt
+            let dayOneMax = currentCityInfo[0].list[0].main.temp_max;
+            let dayOneMin = currentCityInfo[0].list[0].main.temp_min;
+            let dayOneFeel = currentCityInfo[0].list[0].main.feels_like;
+            let dayOneHum = currentCityInfo[0].list[0].main.humidity;
+            forecastOneTitle.innerHTML = "Date: " + dayOneDate;
+            forecastOneHigh.innerHTML = "High: " + dayOneMax;
+            forecastOneLow.innerHTML = "Low: " + dayOneMin;
+            forecastOneFeel.innerHTML = "Feels Like: " + dayOneFeel;
+            forecastOneHum.innerHTML = "Humidity: " + dayOneHum;
 
         // Day 2
-        let dayTwoDate = currentCityInfo[0].list[8].dt_txt;
-        let dayTwoMax = currentCityInfo[0].list[8].main.temp_max;
-        let dayTwoMin = currentCityInfo[0].list[8].main.temp_min;
-        let dayTwoFeel = currentCityInfo[0].list[8].main.feels_like;
-        let dayTwoHum = currentCityInfo[0].list[8].main.humidity;
-        forecastTwoTitle.innerHTML = "Date: " + dayTwoDate;
-        forecastTwoHigh.innerHTML = "High: " + dayTwoMax;
-        forecastTwoLow.innerHTML = "Low: " + dayTwoMin;
-        forecastTwoFeel.innerHTML = "Feels Like: " + dayTwoFeel;
-        forecastTwoHum.innerHTML = "Humidity: " + dayTwoHum;
+            let dayTwoDate = currentCityInfo[0].list[8].dt_txt;
+            let dayTwoMax = currentCityInfo[0].list[8].main.temp_max;
+            let dayTwoMin = currentCityInfo[0].list[8].main.temp_min;
+            let dayTwoFeel = currentCityInfo[0].list[8].main.feels_like;
+            let dayTwoHum = currentCityInfo[0].list[8].main.humidity;
+            forecastTwoTitle.innerHTML = "Date: " + dayTwoDate;
+            forecastTwoHigh.innerHTML = "High: " + dayTwoMax;
+            forecastTwoLow.innerHTML = "Low: " + dayTwoMin;
+            forecastTwoFeel.innerHTML = "Feels Like: " + dayTwoFeel;
+            forecastTwoHum.innerHTML = "Humidity: " + dayTwoHum;
 
         // Day 3
-        let dayThreeDate = currentCityInfo[0].list[16].dt_txt;
-        let dayThreeMax = currentCityInfo[0].list[16].main.temp_max;
-        let dayThreeMin = currentCityInfo[0].list[16].main.temp_min;
-        let dayThreeFeel = currentCityInfo[0].list[16].main.feels_like;
-        let dayThreeHum = currentCityInfo[0].list[16].main.humidity;
-        forecastThreeTitle.innerHTML = "Date: " + dayThreeDate;
-        forecastThreeHigh.innerHTML = "High: " + dayThreeMax;
-        forecastThreeLow.innerHTML = "Low: " + dayThreeMin;
-        forecastThreeFeel.innerHTML = "Feels Like: " + dayThreeFeel;
-        forecastThreeHum.innerHTML = "Humidity: " + dayThreeHum;
+            let dayThreeDate = currentCityInfo[0].list[16].dt_txt;
+            let dayThreeMax = currentCityInfo[0].list[16].main.temp_max;
+            let dayThreeMin = currentCityInfo[0].list[16].main.temp_min;
+            let dayThreeFeel = currentCityInfo[0].list[16].main.feels_like;
+            let dayThreeHum = currentCityInfo[0].list[16].main.humidity;
+            forecastThreeTitle.innerHTML = "Date: " + dayThreeDate;
+            forecastThreeHigh.innerHTML = "High: " + dayThreeMax;
+            forecastThreeLow.innerHTML = "Low: " + dayThreeMin;
+            forecastThreeFeel.innerHTML = "Feels Like: " + dayThreeFeel;
+            forecastThreeHum.innerHTML = "Humidity: " + dayThreeHum;
 
         // Day 4
-        let dayFourDate = currentCityInfo[0].list[24].dt_txt;
-        let dayFourMax = currentCityInfo[0].list[24].main.temp_max;
-        let dayFourMin = currentCityInfo[0].list[24].main.temp_min;
-        let dayFourFeel = currentCityInfo[0].list[24].main.feels_like;
-        let dayFourHum = currentCityInfo[0].list[24].main.humidity;
-        forecastFourTitle.innerHTML = "Date: " + dayFourDate;
-        forecastFourHigh.innerHTML = "High: " + dayFourMax;
-        forecastFourLow.innerHTML = "Low: " + dayFourMin;
-        forecastFourFeel.innerHTML = "Feels Like: " + dayFourFeel;
-        forecastFourHum.innerHTML = "Humidity: " + dayFourHum;
+            let dayFourDate = currentCityInfo[0].list[24].dt_txt;
+            let dayFourMax = currentCityInfo[0].list[24].main.temp_max;
+            let dayFourMin = currentCityInfo[0].list[24].main.temp_min;
+            let dayFourFeel = currentCityInfo[0].list[24].main.feels_like;
+            let dayFourHum = currentCityInfo[0].list[24].main.humidity;
+            forecastFourTitle.innerHTML = "Date: " + dayFourDate;
+            forecastFourHigh.innerHTML = "High: " + dayFourMax;
+            forecastFourLow.innerHTML = "Low: " + dayFourMin;
+            forecastFourFeel.innerHTML = "Feels Like: " + dayFourFeel;
+            forecastFourHum.innerHTML = "Humidity: " + dayFourHum;
 
         // Day 5
-        let dayFiveDate = currentCityInfo[0].list[32].dt_txt;
-        let dayFiveMax = currentCityInfo[0].list[32].main.temp_max;
-        let dayFiveMin = currentCityInfo[0].list[32].main.temp_min;
-        let dayFiveFeel = currentCityInfo[0].list[32].main.feels_like;
-        let dayFiveHum = currentCityInfo[0].list[32].main.humidity;
-        forecastFiveTitle.innerHTML = "Date: " + dayFiveDate;
-        forecastFiveHigh.innerHTML = "High: " + dayFiveMax;
-        forecastFiveLow.innerHTML = "Low: " + dayFiveMin;
-        forecastFiveFeel.innerHTML = "Feels Like: " + dayFiveFeel;
-        forecastFiveHum.innerHTML = "Humidity: " + dayFiveHum;
-}
+            let dayFiveDate = currentCityInfo[0].list[32].dt_txt;
+            let dayFiveMax = currentCityInfo[0].list[32].main.temp_max;
+            let dayFiveMin = currentCityInfo[0].list[32].main.temp_min;
+            let dayFiveFeel = currentCityInfo[0].list[32].main.feels_like;
+            let dayFiveHum = currentCityInfo[0].list[32].main.humidity;
+            forecastFiveTitle.innerHTML = "Date: " + dayFiveDate;
+            forecastFiveHigh.innerHTML = "High: " + dayFiveMax;
+            forecastFiveLow.innerHTML = "Low: " + dayFiveMin;
+            forecastFiveFeel.innerHTML = "Feels Like: " + dayFiveFeel;
+            forecastFiveHum.innerHTML = "Humidity: " + dayFiveHum;
+    }
 
 //------------- Map Box Code ----------------------
     //---------- Creates Map ------------
@@ -144,7 +153,7 @@ function variableAssignment() {
     let map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
+        zoom: 1,
         center: [-96.80331225411656, 32.77771008020435]
     });
 
@@ -161,23 +170,39 @@ function variableAssignment() {
  */
 
 /* --------------------------------------
-Op Plan
-
-- Put Map on page
-    - import mapbox code
-    - review Ajax lessons
-
-- Make map show Dallas
-    - display weather for Dallas
-
-- Create 5-day forecast Cards
-    - Use coffeecard code
-    - create function(s) that makes HTML for card
-    - create eventlisteners that add HTML to doc
-
+Tasks to Complete ----------------------------------
 - Make Project able to change locations
+    - Need to reset City Search Array so it takes in new data
 
 - Make Page look better
     - Use bootstrap to style HTML while building
-    - make colors more apealing
+    - make colors more appealing
+
+Tasks Completed ---------------------------
+    - Created function that pushed JSON to Forecast Cards
+        -
+    - Created Variables for Forecast Cards HTML Elements
+        - Connected variable to JSON object data
+        - Created DOM manipulation to push data to the HTML
+    - Imported Mapbox Code
+        - Styled Map to fit properly on page
+        - Created Margins to ensure proper Spacing
+    - Created Nav Bar
+        - Added App Name
+        - Added App Logo
+        - Added Search Bar
+        - Connected Search Bar to Ajax Request
+
+    - HTML Creation
+        - Added code for 5-day forecast cards
+        - Gave IDs that connect to JSON elements
+        - Created Rows and Columns for Bootstrap Spacing
+        - Spaced Cards Properly using empty Column
+
+    - CSS
+        - Created styling for Cards
+        - Created margin styling for spacing
+        - Created Proper Sizing styling for the Mapbox
+
+
  */
