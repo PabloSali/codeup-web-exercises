@@ -41,10 +41,19 @@
 // selector for search button and event listener that initiates user city search
     let userCitySearch = document.querySelector('#citySearchButton');
     userCitySearch.addEventListener('click', loadUserCity);
+// Selector for mapbox container
+    let mapContainer = document.querySelector('#map');
+// Selector for Mapbox City Title h5
+    let mapCity = document.querySelector('#city-map-name');
+
+
 
 // Function that takes user search input and sends get request
     function loadUserCity() {
-        event.preventDefault();
+        // Prevents total web refresh
+            event.preventDefault();
+        // Resets Map Container to delete old map
+            mapContainer.innerHTML = ''
         // Variable Gets City from Search Bar
             let city = document.getElementById('userCity').value;
 
@@ -63,26 +72,20 @@
             });
     };
 
-function renderCityMap(){
-    let currentCityInfo = currentCityArray[0];
-    let cityLat = currentCityInfo[0].city.coord.lat;
-    let cityLon = currentCityInfo[0].city.coord.lon;
-
-    mapboxgl.accessToken = MAPBOX_TOKEN;
-    let newMap = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 10,
-        center: [cityLon, cityLat]
-    });
-};
-
 // Function that creates the variables to pass JSON information to the Forecast HTML Cards
     function variableAssignment() {
-        // Shows all JSON for city
-            console.log(currentCityArray);
         // Variable to use for accessing JSON, list index is date
-            let currentCityInfo = currentCityArray[0];
+            let currentCityInfo = currentCityArray[currentCityArray.length -1];
+
+        // Shows all JSON for city
+            console.log(currentCityInfo);
+
+        // Variable that assigns City Name from JSON
+            let cityName = currentCityInfo[0].city.name;
+            let cityCountry = currentCityInfo[0].city.country;
+            console.log(cityName + ', ' + cityCountry);
+            mapCity.innerHTML = "City: " + cityName + ', ' + cityCountry;
+
         // Variables assign data and push it to the Forecast Cards
         // Day 1
             let dayOneDate = currentCityInfo[0].list[0].dt_txt
@@ -133,39 +136,35 @@ function renderCityMap(){
             forecastFourHum.innerHTML = "Humidity: " + dayFourHum;
 
         // Day 5
-            let dayFiveDate = currentCityInfo[0].list[32].dt_txt;
-            let dayFiveMax = currentCityInfo[0].list[32].main.temp_max;
-            let dayFiveMin = currentCityInfo[0].list[32].main.temp_min;
-            let dayFiveFeel = currentCityInfo[0].list[32].main.feels_like;
-            let dayFiveHum = currentCityInfo[0].list[32].main.humidity;
+            let dayFiveDate = currentCityInfo[currentCityInfo.length - 1].list[32].dt_txt;
+            let dayFiveMax = currentCityInfo[currentCityInfo.length - 1].list[32].main.temp_max;
+            let dayFiveMin = currentCityInfo[currentCityInfo.length - 1].list[32].main.temp_min;
+            let dayFiveFeel = currentCityInfo[currentCityInfo.length - 1].list[32].main.feels_like;
+            let dayFiveHum = currentCityInfo[currentCityInfo.length - 1].list[32].main.humidity;
             forecastFiveTitle.innerHTML = "Date: " + dayFiveDate;
             forecastFiveHigh.innerHTML = "High: " + dayFiveMax;
             forecastFiveLow.innerHTML = "Low: " + dayFiveMin;
             forecastFiveFeel.innerHTML = "Feels Like: " + dayFiveFeel;
             forecastFiveHum.innerHTML = "Humidity: " + dayFiveHum;
+
     }
 
 //------------- Map Box Code ----------------------
-    //---------- Creates Map ------------
-    mapboxgl.accessToken = MAPBOX_TOKEN;
-    let map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v9',
-        zoom: 1,
-        center: [-96.80331225411656, 32.77771008020435]
-    });
+    // Function takes in JSON lat and Lon to render map of area
+    function renderCityMap(){
+        let currentCityInfo = currentCityArray[currentCityArray.length - 1];
+        let cityLat = currentCityInfo[0].city.coord.lat;
+        let cityLon = currentCityInfo[0].city.coord.lon;
 
-// ------ Code Plan -------
-/*
-- Change Locations
-    - Feed search input into q attribute to load new location information
-    - Use a variable to get search city info from HTML into JS
-    - Set Variable for lat and Lon to input into mapbox to update map
-
-- Update Forecast Cards
-    - Set Variables equal to each attribute needed (Date, Temp, Feel Like, Humidity, Coverage)
-    - Feed each variable into jquery that inputs variable into innerHTML
- */
+        // makes map using MAPBOX
+        mapboxgl.accessToken = MAPBOX_TOKEN;
+        let map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            zoom: 10,
+            center: [cityLon, cityLat]
+        });
+    };
 
 /* --------------------------------------
 Tasks to Complete ----------------------------------
@@ -180,11 +179,17 @@ Tasks Completed ---------------------------
     - Created function that pushed JSON to Forecast Cards
         -
     - Created Variables for Forecast Cards HTML Elements
+        - Set Variables equal to each attribute needed (Date, Temp, Feel Like, Humidity, Coverage)
         - Connected variable to JSON object data
         - Created DOM manipulation to push data to the HTML
+
     - Imported Mapbox Code
+        - Feed search input into q attribute to load new location information
         - Styled Map to fit properly on page
         - Created Margins to ensure proper Spacing
+        - Set Variable for lat and Lon to input into mapbox to update map
+        - Created variable that is used to delete old map so the new map can render
+
     - Created Nav Bar
         - Added App Name
         - Added App Logo
@@ -196,6 +201,7 @@ Tasks Completed ---------------------------
         - Gave IDs that connect to JSON elements
         - Created Rows and Columns for Bootstrap Spacing
         - Spaced Cards Properly using empty Column
+        - Made Heading that changes when new city is searched
 
     - CSS
         - Created styling for Cards
