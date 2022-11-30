@@ -12,6 +12,7 @@
     position: fixed;
     width: 100%;
     z-index: 1;
+    background-color: blue;
 }
 
 .card{
@@ -22,4 +23,8 @@
     margin-left: 5em;
     margin-top: 5em;
     position: fixed;
+}
+
+html{
+    background-color: #3B94D9;
 }

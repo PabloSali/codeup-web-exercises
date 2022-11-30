@@ -13,15 +13,15 @@
     <div class="container-fluid">
 <!-------- Weather Page Logo -------->
         <a class="navbar-brand" href="#">
-            <img src="" alt="Insert Logo Here" width="30" height="24">
+            <img src="img/weather-icon.jpg" alt="Insert Logo Here" width="30" height="24">
         </a>
 <!-------- Weather Page Name -------->
         <a class="navbar-brand">
-            Weather Map Name Here
+            Outside Be Like
         </a>
 <!------- Weather Page Search Bar ------->
         <form class="d-flex" role="search">
-            <input class="form-control me-2" id="userCity" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" id="userCity" type="search" placeholder="What City Are You In?" aria-label="Search">
             <button class="btn btn-outline-success" id="citySearchButton" type="submit">Search</button>
         </form>
     </div>
@@ -46,55 +46,65 @@
     <!-- Container for Forecast Cads -->
     <div class="col-sm-4 col-md-4 col-lg-4" id="forecast-div">
         <!----- Forecast Card #1 ----->
-        <div class="card text-bg-dark forecast-card" id="forecast-one">
-            <img src="img/cloudy.avif" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title" id="forecast1-title">Date: </h5>
-                <p class="card-text" id="forecast1-temp-high"> High: </p>
-                <p class="card-text" id="forecast1-temp-low"> Low: </p>
-                <p class="card-text" id="forecast1-feel-temp"> Feel Like Temp: </p>
-                <p class="card-text" id="forecast1-humidity"> Humidity: </p>
-                <p class="card-text" id="forecast1-coverage"> Coverage: </p>
+            <div class="card text-bg-dark forecast-card" id="forecast-one">
+                <img src="img/cloudy.avif" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title" id="forecast1-title">Date: </h5>
+                    <p class="card-text" id="forecast1-temp-high"> High: </p>
+                    <p class="card-text" id="forecast1-temp-low"> Low: </p>
+                    <p class="card-text" id="forecast1-feel-temp"> Feel Like Temp: </p>
+                    <p class="card-text" id="forecast1-humidity"> Humidity: </p>
+                </div>
             </div>
-        </div>
         <!-- Forecast Card #2 -->
-        <div class="card text-bg-dark forecast-card" id="forecast-two">
-            <img src="img/partialycloudy.avif" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title" id="forecast2-title">Day of Week Here</h5>
-                <p class="card-text" id="forecast2-temp-high"> High: </p>
-                <p class="card-text" id="forecast2-temp-low"> Low: </p>
-                <p class="card-text" id="forecast2-feel-temp"> Feel Like Temp: </p>
-                <p class="card-text" id="forecast2-humidity"> Humidity: </p>
-                <p class="card-text" id="forecast2-coverage"> Coverage: </p>
-        </div>
+            <div class="card text-bg-dark forecast-card" id="forecast-two">
+                <img src="img/partialycloudy.avif" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title" id="forecast2-title">Date: </h5>
+                    <p class="card-text" id="forecast2-temp-high"> High: </p>
+                    <p class="card-text" id="forecast2-temp-low"> Low: </p>
+                    <p class="card-text" id="forecast2-feel-temp"> Feel Like Temp: </p>
+                    <p class="card-text" id="forecast2-humidity"> Humidity:
+                    </p>
+                </div>
+            </div>
         <!-- Forecast Card #3 -->
-        <div class="card text-bg-dark forecast-card" id="forecast-three">
-            <img src="img/partialycloudy.avif" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            <div class="card text-bg-dark forecast-card" id="forecast-three">
+                <img src="img/partialycloudy.avif" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title" id="forecast3-title">Date: </h5>
+                    <p class="card-text" id="forecast3-temp-high"> High: </p>
+                    <p class="card-text" id="forecast3-temp-low"> Low: </p>
+                    <p class="card-text" id="forecast3-feel-temp"> Feel Like Temp: </p>
+                    <p class="card-text" id="forecast3-humidity"> Humidity:
+                    </p>
+                </div>
             </div>
-        </div>
         <!-- Forecast Card #4 -->
-        <div class="card text-bg-dark forecast-card" id="forecast-four">
-            <img src="img/partialycloudy.avif" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            <div class="card text-bg-dark forecast-card" id="forecast-four">
+                <img src="img/partialycloudy.avif" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title" id="forecast4-title">Date: </h5>
+                    <p class="card-text" id="forecast4-temp-high"> High: </p>
+                    <p class="card-text" id="forecast4-temp-low"> Low: </p>
+                    <p class="card-text" id="forecast4-feel-temp"> Feel Like Temp:
+                    </p>
+                    <p class="card-text" id="forecast4-humidity"> Humidity:
+                    </p>
+                </div>
             </div>
-        </div>
         <!-- Forecast Card #5 -->
-        <div class="card text-bg-dark forecast-card" id="forecast-five">
-            <img src="img/partialycloudy.avif" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small>Last updated 3 mins ago</small></p>
+            <div class="card text-bg-dark forecast-card" id="forecast-five">
+                <img src="img/partialycloudy.avif" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                    <h5 class="card-title" id="forecast5-title">Date: </h5>
+                    <p class="card-text" id="forecast5-temp-high"> High: </p>
+                    <p class="card-text" id="forecast5-temp-low"> Low: </p>
+                    <p class="card-text" id="forecast5-feel-temp"> Feel Like Temp: </p>
+                    <p class="card-text" id="forecast5-humidity"> Humidity:
+                    </p>
+                </div>
             </div>
-        </div>
     </div>
 </div>
 <!-- Links -->
