@@ -67,8 +67,7 @@ function renderCityMap(){
     let currentCityInfo = currentCityArray[0];
     let cityLat = currentCityInfo[0].city.coord.lat;
     let cityLon = currentCityInfo[0].city.coord.lon;
-    console.log(cityLat);
-    console.log(cityLon);
+
     mapboxgl.accessToken = MAPBOX_TOKEN;
     let newMap = new mapboxgl.Map({
         container: 'map',
@@ -85,7 +84,6 @@ function renderCityMap(){
         // Variable to use for accessing JSON, list index is date
             let currentCityInfo = currentCityArray[0];
         // Variables assign data and push it to the Forecast Cards
-
         // Day 1
             let dayOneDate = currentCityInfo[0].list[0].dt_txt
             let dayOneMax = currentCityInfo[0].list[0].main.temp_max;
