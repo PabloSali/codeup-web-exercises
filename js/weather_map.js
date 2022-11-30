@@ -40,23 +40,25 @@
 
 // selector for search button and event listener that initiates user city search
     let userCitySearch = document.querySelector('#citySearchButton');
-    userCitySearch.addEventListener('click', loadUserCity);
+    userCitySearch.addEventListener('click', loadUserCity)
 // Selector for mapbox container
-    let mapContainer = document.querySelector('#map');
+    let mapContainer = document.querySelector('#map-leaflet');
 // Selector for Mapbox City Title h5
     let mapCity = document.querySelector('#city-map-name');
-
+// Variable used in function meant for creating markers on map when clicked
+    let clickedPoint = [];
+    let currentMarkers=[];
 
 
 // Function that takes user search input and sends get request
     function loadUserCity() {
         // Prevents total web refresh
-            event.preventDefault();
+        event.preventDefault();
+
         // Resets Map Container to delete old map
             mapContainer.innerHTML = ''
         // Variable Gets City from Search Bar
-            let city = document.getElementById('userCity').value;
-
+            let city = document.getElementById('userCity').value
         // Get request to pull JSON of City variable
             $.get("http://api.openweathermap.org/data/2.5/forecast", {
                 APPID: OPEN_WEATHER_APPID,
@@ -68,9 +70,10 @@
                 currentCityArray.push(arrayData);
                 variableAssignment();
                 renderCityMap();
-
             });
-    };
+
+    }
+
 
 // Function that creates the variables to pass JSON information to the Forecast HTML Cards
     function variableAssignment() {
@@ -157,20 +160,116 @@
         let cityLon = currentCityInfo[0].city.coord.lon;
 
         // makes map using MAPBOX
-        mapboxgl.accessToken = MAPBOX_TOKEN;
-        let map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9',
-            zoom: 10,
-            center: [cityLon, cityLat]
+            mapboxgl.accessToken = MAPBOX_TOKEN;
+            let map = new mapboxgl.Map({
+                container: 'map-leaflet',
+                style: 'mapbox://styles/mapbox/streets-v9',
+                zoom: 10,
+                center: [cityLon, cityLat]
         });
-    };
+        console.log(cityLon + ', ' + cityLat);
+
+        // Event Creates markers and deletes any existing markers
+        map.on('click', (event) => {
+            event.preventDefault()
+            // remove markers
+            if (currentMarkers!==null) {
+                for (let i = currentMarkers.length - 1; i >= 0; i--) {
+                    currentMarkers[i].remove();
+                }
+            }
+            // Variable holds clicked location's lat and lon
+             clickedPoint = [event.lngLat.lng, event.lngLat.lat];
+
+            // Centers the map on the clicked location
+                const location = {
+                    center: clickedPoint,
+                    zoom: map.getZoom(),
+                    pitch: map.getPitch(),
+                    bearing: map.getBearing(),
+                };
+            // Moves map to clicked location
+                map.flyTo(location);
+                const clicked = {
+                    location: location
+                };
+            //Logs the new Lat and Lon
+              console.log(JSON.stringify(clicked, null, 2));
+
+            let marker = new mapboxgl.Marker()
+                .setLngLat([clickedPoint[0], clickedPoint[1]])
+                .addTo(map);
+                currentMarkers.push(marker);
+
+            //
+            let clickedCityCoor = {
+                lat: event.lngLat.lat,
+                lng: event.lngLat.lng
+            };
+
+            //Runs function that updates forecast to new location
+            reverseGeocode(clickedCityCoor, MAPBOX_TOKEN);
+        });
+    }
+// Function that updates users search with clicked location\
+// function locationClicked() {
+
+    function reverseGeocode(coordinates, token) {
+        console.log("locationClicked called")
+        let baseUrl = 'https://api.mapbox.com';
+        let endPoint = '/geocoding/v5/mapbox.places/';
+        return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
+            .then(function(res) {
+                return res.json();
+            })
+            .then(function(data) {
+                console.log(data)
+                let locationString = data.features[0].place_name;
+                console.log(locationString);
+                let locationArray = locationString.split(', ')
+                console.log(locationArray)
+                if (locationArray.length === 4){
+                    let locationCity = locationArray[1]
+                    console.log(locationCity);
+                    loadClickedCity(locationCity);
+                }
+                if (locationArray.length === 5){
+                    let locationCity = locationArray[2]
+                    console.log(locationCity);
+                    loadClickedCity(locationCity);
+                }
+            });
+        function loadClickedCity(city) {
+            // Prevents total web refresh
+            // event.preventDefault();
+
+            // Resets Map Container to delete old map
+            mapContainer.innerHTML = ''
+            // Variable Gets City from Search Bar
+
+            // Get request to pull JSON of City variable
+            $.get("http://api.openweathermap.org/data/2.5/forecast", {
+                APPID: OPEN_WEATHER_APPID,
+                q: city,
+                units: "imperial"
+            }).done(function (data) {
+                let arrayData = [data]
+                console.log(data); // Entire Object Console Log
+                currentCityArray.push(arrayData);
+                variableAssignment();
+                renderCityMap();
+
+            });
+
+        }
+}
+
+
+
+
 
 /* --------------------------------------
 Tasks to Complete ----------------------------------
-- Make Project able to change locations
-    - Need to reset City Search Array so it takes in new data
-
 - Make Page look better
     - Use bootstrap to style HTML while building
     - make colors more appealing
