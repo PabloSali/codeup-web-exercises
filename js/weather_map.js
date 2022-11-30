@@ -1,62 +1,53 @@
-// Code to get object information from api
 
-    // let citySearch = document.getElementById('userCity');
-    // let searchButton = document.getElementById('citySearchButton');
-    // searchButton.addEventListener('click', function() {
-    //
-    // });
+// All selectors for the Forecast Cards
+    // Forecast 1 Query Selectors
+    let forecastOneTitle = document.querySelector('#forecast1-title');
+    let forecastOneHigh = document.querySelector('#forecast1-temp-high');
+    let forecastOneLow = document.querySelector('#forecast1-temp-low');
+    let forecastOneFeel = document.querySelector('#forecast1-feel-temp');
+    let forecastOneHum = document.querySelector('#forecast1-humidity');
 
-// Code to create a variable that holds api information requested through get.
-// Variable is then able to be used to access City information
-// Variable is used to request city info, set equal to search box info
+    // Forecast 2 Query Selectors
+    let forecastTwoTitle = document.querySelector('#forecast2-title');
+    let forecastTwoHigh = document.querySelector('#forecast2-temp-high');
+    let forecastTwoLow = document.querySelector('#forecast2-temp-low');
+    let forecastTwoFeel = document.querySelector('#forecast2-feel-temp');
+    let forecastTwoHum = document.querySelector('#forecast2-humidity');
+
+    // Forecast 3 Query Selectors
+    let forecastThreeTitle = document.querySelector('#forecast3-title');
+    let forecastThreeHigh = document.querySelector('#forecast3-temp-high');
+    let forecastThreeLow = document.querySelector('#forecast3-temp-low');
+    let forecastThreeFeel = document.querySelector('#forecast3-feel-temp');
+    let forecastThreeHum = document.querySelector('#forecast3-humidity');
+
+    // Forecast 4 Query Selectors
+    let forecastFourTitle = document.querySelector('#forecast4-title');
+    let forecastFourHigh = document.querySelector('#forecast4-temp-high');
+    let forecastFourLow = document.querySelector('#forecast4-temp-low');
+    let forecastFourFeel = document.querySelector('#forecast4-feel-temp');
+    let forecastFourHum = document.querySelector('#forecast4-humidity');
+
+    // Forecast 5 Query Selectors
+    let forecastFiveTitle = document.querySelector('#forecast5-title');
+    let forecastFiveHigh = document.querySelector('#forecast5-temp-high');
+    let forecastFiveLow = document.querySelector('#forecast5-temp-low');
+    let forecastFiveFeel = document.querySelector('#forecast5-feel-temp');
+    let forecastFiveHum = document.querySelector('#forecast5-humidity');
+
+let currentCityArray = []
 
 // selector for search button and event listener that initiates user city search
 let userCitySearch = document.querySelector('#citySearchButton');
 userCitySearch.addEventListener('click', loadUserCity);
 
-// Forecast 1 Query Selectors
-let forecastOneTitle = document.querySelector('#forecast1-title');
-let forecastOneHigh = document.querySelector('#forecast1-temp-high');
-let forecastOneLow = document.querySelector('#forecast1-temp-low');
-let forecastOneFeel = document.querySelector('#forecast1-feel-temp');
-let forecastOneHum = document.querySelector('#forecast1-humidity');
-
-// Forecast 2 Query Selectors
-let forecastTwoTitle = document.querySelector('#forecast2-title');
-let forecastTwoHigh = document.querySelector('#forecast2-temp-high');
-let forecastTwoLow = document.querySelector('#forecast2-temp-low');
-let forecastTwoFeel = document.querySelector('#forecast2-feel-temp');
-let forecastTwoHum = document.querySelector('#forecast2-humidity');
-
-// Forecast 3 Query Selectors
-let forecastThreeTitle = document.querySelector('#forecast3-title');
-let forecastThreeHigh = document.querySelector('#forecast3-temp-high');
-let forecastThreeLow = document.querySelector('#forecast3-temp-low');
-let forecastThreeFeel = document.querySelector('#forecast3-feel-temp');
-let forecastThreeHum = document.querySelector('#forecast3-humidity');
-
-// Forecast 4 Query Selectors
-let forecastFourTitle = document.querySelector('#forecast4-title');
-let forecastFourHigh = document.querySelector('#forecast4-temp-high');
-let forecastFourLow = document.querySelector('#forecast4-temp-low');
-let forecastFourFeel = document.querySelector('#forecast4-feel-temp');
-let forecastFourHum = document.querySelector('#forecast4-humidity');
-
-// Forecast 5 Query Selectors
-let forecastFiveTitle = document.querySelector('#forecast5-title');
-let forecastFiveHigh = document.querySelector('#forecast5-temp-high');
-let forecastFiveLow = document.querySelector('#forecast5-temp-low');
-let forecastFiveFeel = document.querySelector('#forecast5-feel-temp');
-let forecastFiveHum = document.querySelector('#forecast5-humidity');
-
-let currentCityArray = []
-
 // Function that takes user search input and sends get request
 function loadUserCity() {
     event.preventDefault();
+    // Variable Gets City from Search Bar
     let city = document.getElementById('userCity').value;
-    console.log(city);
 
+    // Get request to pull JSON of City variable
     $.get("http://api.openweathermap.org/data/2.5/forecast", {
         APPID: OPEN_WEATHER_APPID,
         q: city,
@@ -65,9 +56,9 @@ function loadUserCity() {
         let arrayData = [data]
         console.log(data); // Entire Object Console Log
         currentCityArray.push(arrayData);
-        // console.log(currentCityArray)
         variableAssignment();
         // renderCityMap();
+
     });
 };
 
@@ -78,7 +69,6 @@ function loadUserCity() {
 //     console.log(cityLat);
 //     console.log(cityLon);
 // };
-
 
 function variableAssignment() {
         // Shows all JSON for city
