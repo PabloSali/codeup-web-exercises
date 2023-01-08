@@ -96,6 +96,7 @@
             let dayOneMin = currentCityInfo[0].list[0].main.temp_min;
             let dayOneFeel = currentCityInfo[0].list[0].main.feels_like;
             let dayOneHum = currentCityInfo[0].list[0].main.humidity;
+
             forecastOneTitle.innerHTML = "Date: " + dayOneDate;
             forecastOneHigh.innerHTML = "High: " + dayOneMax;
             forecastOneLow.innerHTML = "Low: " + dayOneMin;
@@ -108,6 +109,7 @@
             let dayTwoMin = currentCityInfo[0].list[8].main.temp_min;
             let dayTwoFeel = currentCityInfo[0].list[8].main.feels_like;
             let dayTwoHum = currentCityInfo[0].list[8].main.humidity;
+
             forecastTwoTitle.innerHTML = "Date: " + dayTwoDate;
             forecastTwoHigh.innerHTML = "High: " + dayTwoMax;
             forecastTwoLow.innerHTML = "Low: " + dayTwoMin;
